@@ -3,6 +3,7 @@ package com.example.dea.MyBooksSql.Service;
 import com.example.dea.MyBooksSql.Entity.Books;
 import com.example.dea.MyBooksSql.Repository.BooksRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,11 +20,13 @@ public class BooksService {
     public List<Books > getAllBooksByAuthor(String author) {
         return booksRepository.getaLLBooksByAuthor( author);
     }
+
     public List<Books > getAllBooksByName(String name) {
         return booksRepository.getAllBooksByName( name);
     }
-    public List<Books > getAllBooksByPrice(Double price) {
-        return booksRepository.getAllBooksByPrice(price);
+
+    public List<Books > getAllBooksByPrice(Double minPrice) {
+        return booksRepository.getAllBooksByPrice(minPrice);
     }
     /// Сначало срабатывает класс ентитй после этоко репозиторй а потом сервисе и контроллер
     /// --=
