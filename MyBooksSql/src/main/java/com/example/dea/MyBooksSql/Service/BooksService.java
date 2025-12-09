@@ -2,6 +2,9 @@ package com.example.dea.MyBooksSql.Service;
 
 import com.example.dea.MyBooksSql.Entity.Books;
 import com.example.dea.MyBooksSql.Repository.BooksRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,11 @@ public class BooksService {
 
     public List<Books > getAllBooksByPrice(Double minPrice) {
         return booksRepository.getAllBooksByPrice(minPrice);
+    }
+
+    public Page<Books> getBooksByPage(@PathVariable int page, @PathVariable int size){
+        Pageable pageable = PageRequest.of(page,size) ;
+        return booksRepository.findAll(pageable);
     }
     /// Сначало срабатывает класс ентитй после этоко репозиторй а потом сервисе и контроллер
     /// --=
@@ -67,4 +75,5 @@ public class BooksService {
        })
                .orElseThrow(() -> new RuntimeException("Error"));
     }
+
 }

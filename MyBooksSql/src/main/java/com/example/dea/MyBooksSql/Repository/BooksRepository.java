@@ -1,6 +1,8 @@
 package com.example.dea.MyBooksSql.Repository;
 
 import com.example.dea.MyBooksSql.Entity.Books;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +18,6 @@ public interface BooksRepository extends JpaRepository<Books, Integer> {
 
     @Query(value = "SELECT * FROM books1 WHERE LOWER(name) LIKE LOWER(CONCAT('%' :name,'%')", nativeQuery = true)
     List<Books> getAllBooksByName(String name);
+
+    Page<Books> findAll(Pageable pageable);// pagination
 }
