@@ -12,7 +12,7 @@ public class Books {
     private  String author;
     private Double price;
     private String title;
-//Getter Setter
+//Getter and Setter
 
     public String getTitle() {
         return title;
@@ -53,4 +53,7 @@ public class Books {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @OneToOne(mappedBy = "books" , cascade = CascadeType.ALL)
+    private BooksDetails booksDetails;
 }
