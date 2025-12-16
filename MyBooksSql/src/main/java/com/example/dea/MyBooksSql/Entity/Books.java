@@ -55,5 +55,5 @@ public class Books {
     }
 
     @OneToOne(mappedBy = "books" , cascade = CascadeType.ALL)
-    private BooksDetails booksDetails;
+    private BooksAuthorDetails booksAuthorDetails;
 }
